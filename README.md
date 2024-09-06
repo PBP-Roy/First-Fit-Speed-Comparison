@@ -124,39 +124,6 @@ int main() {
 
     return 0;
 }
-
-// int main() {
-//     init_memory_blocks();
-//     print_memory_status();
-
-//     clock_t start, end;
-//     double first_fit_time, best_fit_time;
-
-//     // Simulate memory allocation using first fit
-//     start = clock();
-//     for (int i = 0; i < 1000000; i++) {
-//         void* ptr = first_fit_allocate(rand() % 128 + 16);
-//         if (ptr != NULL) free_memory(ptr);
-//     }
-//     end = clock();
-//     first_fit_time = ((double)(end - start)) / CLOCKS_PER_SEC;
-
-//     // Simulate memory allocation using best fit
-//     start = clock();
-//     for (int i = 0; i < 1000000; i++) {
-//         void* ptr = best_fit_allocate(rand() % 128 + 16);
-//         if (ptr != NULL) free_memory(ptr);
-//     }
-//     end = clock();
-//     best_fit_time = ((double)(end - start)) / CLOCKS_PER_SEC;
-
-//     printf("First Fit Allocation Time: %f seconds\n", first_fit_time);
-//     printf("Best Fit Allocation Time: %f seconds\n", best_fit_time);
-
-//     print_memory_status();
-
-//     return 0;
-// }
 ```
 
 ### Penjelasan Program
