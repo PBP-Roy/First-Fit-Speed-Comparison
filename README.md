@@ -20,7 +20,7 @@ Berikut adalah program C yang mensimulasikan pengalokasian memori menggunakan al
 #include <stdlib.h>
 #include <time.h>
 
-#define MEMORY_SIZE 1024 // Total memory in bytes
+// #define MEMORY_SIZE 1024 // Total memory in bytes
 #define BLOCK_COUNT 20   // Number of memory blocks
 
 typedef struct {
@@ -40,17 +40,18 @@ void init_memory_blocks() {
     }
 }
 
-void* first_fit_allocate(int size) {
+void* first_fit_allocate(int size, int *internal_frag) {
     for (int i = 0; i < BLOCK_COUNT; i++) {
         if (memory_blocks[i].free && memory_blocks[i].size >= size) {
             memory_blocks[i].free = 0;
+            *internal_frag += (memory_blocks[i].size - size); // Calculate internal fragmentation
             return memory_blocks[i].address;
         }
     }
     return NULL;
 }
 
-void* best_fit_allocate(int size) {
+void* best_fit_allocate(int size, int *internal_frag) {
     int best_index = -1;
     for (int i = 0; i < BLOCK_COUNT; i++) {
         if (memory_blocks[i].free && memory_blocks[i].size >= size) {
@@ -61,6 +62,7 @@ void* best_fit_allocate(int size) {
     }
     if (best_index != -1) {
         memory_blocks[best_index].free = 0;
+        *internal_frag += (memory_blocks[best_index].size - size); // Calculate internal fragmentation
         return memory_blocks[best_index].address;
     }
     return NULL;
@@ -85,15 +87,17 @@ void print_memory_status() {
 
 int main() {
     init_memory_blocks();
-    print_memory_status();
+    // print_memory_status();
 
     clock_t start, end;
     double first_fit_time, best_fit_time;
 
+    int internal_frag_first_fit = 0, internal_frag_best_fit = 0;
+
     // Simulate memory allocation using first fit
     start = clock();
-    for (int i = 0; i < 10; i++) {
-        void* ptr = first_fit_allocate(rand() % 128 + 16);
+    for (int i = 0; i < 1000000; i++) {
+        void* ptr = first_fit_allocate(rand() % 128 + 16, &internal_frag_first_fit);
         if (ptr != NULL) free_memory(ptr);
     }
     end = clock();
@@ -101,8 +105,8 @@ int main() {
 
     // Simulate memory allocation using best fit
     start = clock();
-    for (int i = 0; i < 10; i++) {
-        void* ptr = best_fit_allocate(rand() % 128 + 16);
+    for (int i = 0; i < 1000000; i++) {
+        void* ptr = best_fit_allocate(rand() % 128 + 16, &internal_frag_best_fit);
         if (ptr != NULL) free_memory(ptr);
     }
     end = clock();
@@ -111,10 +115,48 @@ int main() {
     printf("First Fit Allocation Time: %f seconds\n", first_fit_time);
     printf("Best Fit Allocation Time: %f seconds\n", best_fit_time);
 
-    print_memory_status();
+    printf("\n");
+
+    printf("First Fit - Fragmentation: %d bytes\n", internal_frag_first_fit);
+    printf("Best Fit - Fragmentation: %d bytes\n", internal_frag_best_fit);
+
+    // print_memory_status();
 
     return 0;
 }
+
+// int main() {
+//     init_memory_blocks();
+//     print_memory_status();
+
+//     clock_t start, end;
+//     double first_fit_time, best_fit_time;
+
+//     // Simulate memory allocation using first fit
+//     start = clock();
+//     for (int i = 0; i < 1000000; i++) {
+//         void* ptr = first_fit_allocate(rand() % 128 + 16);
+//         if (ptr != NULL) free_memory(ptr);
+//     }
+//     end = clock();
+//     first_fit_time = ((double)(end - start)) / CLOCKS_PER_SEC;
+
+//     // Simulate memory allocation using best fit
+//     start = clock();
+//     for (int i = 0; i < 1000000; i++) {
+//         void* ptr = best_fit_allocate(rand() % 128 + 16);
+//         if (ptr != NULL) free_memory(ptr);
+//     }
+//     end = clock();
+//     best_fit_time = ((double)(end - start)) / CLOCKS_PER_SEC;
+
+//     printf("First Fit Allocation Time: %f seconds\n", first_fit_time);
+//     printf("Best Fit Allocation Time: %f seconds\n", best_fit_time);
+
+//     print_memory_status();
+
+//     return 0;
+// }
 ```
 
 ### Penjelasan Program
