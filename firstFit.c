@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-// #define MEMORY_SIZE 1024 // Total memory in bytes
-#define BLOCK_COUNT 20   // Number of memory blocks
+#define BLOCK_COUNT 20 // Number of variating memory blocks
 
 typedef struct {
     int size;
@@ -86,7 +85,6 @@ void print_memory_status() {
 
 int main() {
     init_memory_blocks();
-    // print_memory_status();
 
     clock_t start, end;
     double first_fit_time, best_fit_time, worst_fit_time;
@@ -129,8 +127,6 @@ int main() {
     printf("First Fit - Fragmentation: %d bytes\n", internal_frag_first_fit);
     printf("Best Fit - Fragmentation: %d bytes\n", internal_frag_best_fit);
     printf("Worst Fit - Fragmentation: %d bytes\n", internal_frag_worst_fit);
-
-    // print_memory_status();
 
     return 0;
 }
