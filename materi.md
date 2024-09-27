@@ -96,3 +96,7 @@ Algoritma manajemen memori dalam sistem operasi (OS) digunakan untuk mengatur al
 ### 8. **Buddy System**
 
 - Algoritma alokasi memori yang membagi memori menjadi blok-blok berukuran pangkat dua. Saat memori diperlukan, blok terbesar yang lebih kecil dari atau sama dengan ukuran yang diminta dipilih. Jika diperlukan, blok tersebut dibagi menjadi dua bagian yang lebih kecil hingga ukuran yang sesuai ditemukan.
+
+### Contoh Kasus
+ketika menjalankan software pada os jika membuka banyak aplikasi atau tab browser sekaligus akan menyebabkan penurunan performa, kemudian ketika kita men close nya secara acak kemungkinan memori yang telah teralokasi akan menjadi lubang atau terjadi fragmentasi yang membuat tidak bisa mengembalikan performa seperti awal secara penuh
+[Soource]([Fragmentasi (komputer) (stekom.ac.id)](https://p2k.stekom.ac.id/ensiklopedia/Fragmentasi_%28komputer%29?formCode=MG0AV3))
