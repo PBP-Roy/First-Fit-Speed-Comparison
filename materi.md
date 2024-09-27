@@ -89,11 +89,7 @@ Algoritma manajemen memori dalam sistem operasi (OS) digunakan untuk mengatur al
 - **Fragmentasi Internal**: Terjadi ketika blok memori yang dialokasikan lebih besar dari yang diperlukan, menyisakan ruang kosong yang tidak terpakai.
 - Untuk mengatasi fragmentasi, teknik seperti **Compaction** digunakan untuk menggabungkan ruang memori bebas yang tersebar menjadi satu blok yang lebih besar.
 
-### 7. **Garbage Collection**
-
-- Digunakan dalam bahasa pemrograman tingkat tinggi seperti Java atau Python, di mana sistem secara otomatis mengelola alokasi dan dealokasi memori. Algoritma seperti _Mark-and-Sweep_ atau _Reference Counting_ digunakan untuk mengidentifikasi dan membebaskan memori yang tidak lagi digunakan.
-
-### 8. **Buddy System**
+### 7. **Buddy System**
 
 - Algoritma alokasi memori yang membagi memori menjadi blok-blok berukuran pangkat dua. Saat memori diperlukan, blok terbesar yang lebih kecil dari atau sama dengan ukuran yang diminta dipilih. Jika diperlukan, blok tersebut dibagi menjadi dua bagian yang lebih kecil hingga ukuran yang sesuai ditemukan.
 
