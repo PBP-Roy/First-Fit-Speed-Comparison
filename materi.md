@@ -99,7 +99,7 @@ Algoritma manajemen memori dalam sistem operasi (OS) digunakan untuk mengatur al
 
 ### Contoh Kasus
 ketika menjalankan software pada os jika membuka banyak aplikasi atau tab browser sekaligus akan menyebabkan penurunan performa, kemudian ketika kita men close nya secara acak kemungkinan memori yang telah teralokasi akan menjadi lubang atau terjadi fragmentasi yang membuat tidak bisa mengembalikan performa seperti awal secara penuh
-[Source]([https://p2k.stekom.ac.id/ensiklopedia/Fragmentasi_%28komputer%29?formCode=MG0AV3](https://techcommunity.microsoft.com/t5/ask-the-performance-team/disk-fragmentation-and-system-performance/ba-p/372921))
+[Source](https://p2k.stekom.ac.id/ensiklopedia/Fragmentasi_%28komputer%29?formCode=MG0AV3)
 
 1. **Linux Kernel Memory Allocation**:
     
