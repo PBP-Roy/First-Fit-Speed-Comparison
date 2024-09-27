@@ -100,3 +100,11 @@ Algoritma manajemen memori dalam sistem operasi (OS) digunakan untuk mengatur al
 ### Contoh Kasus
 ketika menjalankan software pada os jika membuka banyak aplikasi atau tab browser sekaligus akan menyebabkan penurunan performa, kemudian ketika kita men close nya secara acak kemungkinan memori yang telah teralokasi akan menjadi lubang atau terjadi fragmentasi yang membuat tidak bisa mengembalikan performa seperti awal secara penuh
 [Soource]([Fragmentasi (komputer) (stekom.ac.id)](https://p2k.stekom.ac.id/ensiklopedia/Fragmentasi_%28komputer%29?formCode=MG0AV3))
+
+1. **Linux Kernel Memory Allocation**:
+    
+    - **Buddy System**: Sistem buddy pada kernel Linux menggunakan variasi dari algoritma first fit untuk mengalokasikan blok memori. Sistem ini membagi memori menjadi blok-blok dengan ukuran yang merupakan pangkat dua, dan mencari blok terkecil yang cukup besar untuk memenuhi permintaan memori [source](https://www.kernel.org/doc/html/latest/core-api/memory-allocation.html)[1](https://www.kernel.org/doc/html/latest/core-api/memory-allocation.html).
+    - **Slab Allocator**: Slab allocator menggunakan pendekatan best fit untuk mengalokasikan objek kecil dalam kernel. Ini membantu mengurangi fragmentasi internal dengan mencari cache yang paling sesuai dengan ukuran objek yang diminta [source](https://www.geeksforgeeks.org/operating-system-allocating-kernel-memory-buddy-system-slab-system/)[2](https://www.geeksforgeeks.org/operating-system-allocating-kernel-memory-buddy-system-slab-system/).
+2. **Windows Heap Manager**:
+
+    - **Heap Manager**: Pada Windows, heap manager mendukung berbagai strategi alokasi, termasuk first fit dan best fit. Heap manager biasanya memilih blok pertama yang cukup besar untuk memenuhi permintaan alokasi, tetapi dapat beralih ke strategi yang lebih mirip best fit saat memori semakin terfragmentasi [source](https://www.kernel.org/doc/html/v5.4/core-api/memory-allocation.html)
